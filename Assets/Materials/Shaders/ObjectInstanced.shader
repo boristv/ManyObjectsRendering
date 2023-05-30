@@ -27,7 +27,6 @@ Shader "Object Instanced"
 
             StructuredBuffer<float4> position_buffer_1;
             StructuredBuffer<float4> position_buffer_2;
-            float4 color_buffer[8];
 
             struct attributes
             {
@@ -49,7 +48,7 @@ Shader "Object Instanced"
                 return frac(sin(n) * 43758.5453);
             }
             
-            float CustomNoise(float2 x)
+            float customNoise(float2 x)
             {
                 float2 p = floor(x);
                 float2 f = frac(x);
@@ -75,7 +74,7 @@ Shader "Object Instanced"
                 const float time = _Time.y;
                 const float3 pos = start +_lastPos;
                 const float t = smoothstep(yOffset, BURST_HEIGHT_SCALE + yOffset, pos.y);
-                const float y = BURST_HEIGHT_SCALE * CustomNoise(float2(pos.x * NOISE_SCALE + time, pos.z * NOISE_SCALE + time)) + yOffset * DEPTH_OFFSET;
+                const float y = BURST_HEIGHT_SCALE * customNoise(float2(pos.x * NOISE_SCALE + time, pos.z * NOISE_SCALE + time)) + yOffset * DEPTH_OFFSET;
                 const float3 newPos = float3(pos.x, y, pos.z);
                 _lastPos = newPos - start;
 

@@ -16,7 +16,6 @@ public static class MovingController
     public static readonly quaternion RotGoal = quaternion.Euler(130, 50, 150);
 
     private static int Depth { get; set; } = 1;
-
     public static readonly Vector3 ObjectSize = Vector3.one;
 
     public static int GetCount => SIDE_LENGTH * SIDE_LENGTH * Depth;
